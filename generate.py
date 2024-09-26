@@ -17,6 +17,7 @@ for i in range(100):
 	lname = lastnames[lnr]+"а" if g==1 else lastnames[lnr]
 	fname = firstnames[fnr].split("/")[g]
 
+
 	day = random.randint(1,28)
 	month = random.randint(1,12)
 	year = random.randint(1999, 2003)
@@ -33,9 +34,16 @@ for i in range(100):
 	ekzmonth = random.randint(0,1)
 	ekzyear = random.randint(2024, 2025)
 	for sub in ekzes:
+		plnr = random.randint(0, len(lastnames)-1)
+		pfnr = random.randint(0, len(firstnames)-1)
+		pg = random.randint(0,1)
+
+		plname = lastnames[plnr]+"а" if pg==1 else lastnames[plnr]
+		pfname = firstnames[pfnr].split("/")[pg]
+
 		ekzday = random.randint(1,28)
 
-		ekzlist.update({sub:f"{ekzday}.{'1' if ekzmonth == 0 else '6'}.{ekzyear}"})
+		ekzlist.update({sub:{"date":f"{ekzday}.{'1' if ekzmonth == 0 else '6'}.{ekzyear}", "prepod":f"{plname} {pfname}"}})
 
 	students.update({znum:
 		{
